@@ -1,0 +1,5 @@
+<div *ngIf="data" class="ui container">
+  <div *ngFor="let item of data.hits">
+    <img src="{{ item.largeImageURL }}" />
+  </div>
+</div>

@@ -12,4 +12,8 @@ export class PicsService {
   API_VIDEOS = 'videos/';
 
   constructor(private http: HttpClient) {}
+
+  getMedia() {
+    return this.http.get(`${this.API_PATH}${this.API_PICTURES}?key=${this.API_KEY}`);
+  }
 }
