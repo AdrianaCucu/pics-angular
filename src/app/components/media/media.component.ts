@@ -15,7 +15,7 @@ export class MediaComponent {
 
   constructor(private picsService: PicsService, private router: Router) {
     this.routeParams = router.url;
-    // console.log(this.routeParams);
+    console.log(this.routeParams);
   }
 
   getMedia(search: string) {

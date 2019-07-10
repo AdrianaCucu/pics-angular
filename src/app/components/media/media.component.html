@@ -1,2 +1,2 @@
 <app-nav-bar (searchEvent)="getMedia($event)"></app-nav-bar>
-<app-media-list *ngIf="data" [data]="data"></app-media-list>
+<app-media-list *ngIf="data" [data]="data" [params]="routeParams"></app-media-list>

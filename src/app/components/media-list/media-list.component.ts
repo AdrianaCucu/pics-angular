@@ -9,4 +9,6 @@ import { Component, Input } from '@angular/core';
 // Presentation component
 export class MediaListComponent {
   @Input() data: any;
+
+  @Input() params: string;
 }

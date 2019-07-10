@@ -1,5 +1,11 @@
-<div *ngIf="data" class="ui container">
+<div *ngIf="data && params === '/pictures'" class="ui container">
   <div *ngFor="let item of data.hits">
     <img src="{{ item.largeImageURL }}" />
+  </div>
+</div>
+
+<div *ngIf="data && params === '/videos'" class="ui container">
+  <div *ngFor="let item of data.hits">
+    <img src="{{ item.userImageUrl }}" />
   </div>
 </div>
