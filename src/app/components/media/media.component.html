@@ -1,1 +1,2 @@
-<app-pictures *ngIf="data" [data]="data"></app-pictures>
+<app-nav-bar (searchEvent)="getMedia($event)"></app-nav-bar>
+<app-media-list *ngIf="data" [data]="data"></app-media-list>

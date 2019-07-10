@@ -3,14 +3,24 @@
     <div class="ui two item menu">
       <div class="item menu">
         <div class="ui transparent icon input">
-          <input type="text" placeholder="Search picture..." />
+          <input
+            (keyup.enter)="enterSearch($event)"
+            type="text"
+            placeholder="Search picture..."
+            [routerLink]="['/pictures']"
+          />
           <i class="search icon"></i>
         </div>
       </div>
 
       <div class="item menu">
         <div class="ui transparent icon input">
-          <input type="text" placeholder="Search video..." />
+          <input
+            (keyup.enter)="enterSearch($event)"
+            type="text"
+            placeholder="Search video..."
+            [routerLink]="['/videos']"
+          />
           <i class="search icon"></i>
         </div>
       </div>

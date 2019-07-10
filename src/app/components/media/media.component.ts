@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { PicsService } from 'src/app/services/pics.service';
 
@@ -17,5 +17,9 @@ export class MediaComponent implements OnInit {
       this.data = data;
       console.log(this.data);
     });
+  }
+
+  getMedia(search: string) {
+    console.log(search);
   }
 }
