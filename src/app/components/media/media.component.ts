@@ -1,25 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { PicsService } from 'src/app/services/pics.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
-export class MediaComponent implements OnInit {
+export class MediaComponent {
   data: any;
 
-  constructor(private picsService: PicsService) {}
+  routeParams: any;
 
-  ngOnInit() {
-    this.picsService.getMedia().subscribe(data => {
-      this.data = data;
-      console.log(this.data);
-    });
+  constructor(private picsService: PicsService, private router: Router) {
+    this.routeParams = router.url;
+    // console.log(this.routeParams);
   }
 
   getMedia(search: string) {
-    console.log(search);
+    this.picsService.getMedia(this.routeParams, search).subscribe(data => {
+      this.data = data;
+      console.log(this.data);
+    });
   }
 }

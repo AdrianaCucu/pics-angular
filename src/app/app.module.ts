@@ -21,9 +21,9 @@ import { PicsService } from './services/pics.service';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '', component: AppComponent },
-      { path: 'pictures', component: AppComponent },
-      { path: 'videos', component: AppComponent }
+      { path: '', component: MediaComponent, pathMatch: 'full' },
+      { path: 'pictures', component: MediaComponent, pathMatch: 'full' },
+      { path: 'videos', component: MediaComponent, pathMatch: 'full' }
     ])
   ],
   providers: [PicsService],

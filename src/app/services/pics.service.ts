@@ -13,7 +13,23 @@ export class PicsService {
 
   constructor(private http: HttpClient) {}
 
-  getMedia() {
-    return this.http.get(`${this.API_PATH}${this.API_PICTURES}?key=${this.API_KEY}`);
+  getMedia(type: string, searchParams: string) {
+    switch (type) {
+      case '/pictures': {
+        return this.http.get(
+          `${this.API_PATH}${this.API_PICTURES}?key=${
+            this.API_KEY
+          }&q=${searchParams}`
+        );
+      }
+
+      case '/videos': {
+        return this.http.get(
+          `${this.API_PATH}${this.API_VIDEOS}?key=${
+            this.API_KEY
+          }&q=${searchParams}`
+        );
+      }
+    }
   }
 }
