@@ -6,22 +6,19 @@
           <input
             (keyup.enter)="enterSearch($event)"
             type="text"
-            placeholder="Search picture..."
-            [routerLink]="['/pictures']"
+            placeholder="Search ..."
           />
           <i class="search icon"></i>
         </div>
       </div>
 
-      <div class="item menu">
-        <div class="ui transparent icon input">
-          <input
-            (keyup.enter)="enterSearch($event)"
-            type="text"
-            placeholder="Search video..."
-            [routerLink]="['/videos']"
-          />
-          <i class="search icon"></i>
+      <div class="item">
+        <div class="ui buttons">
+          <button class="ui button" [routerLink]="['/pictures']">
+            Pictures
+          </button>
+          <div class="or"></div>
+          <button class="ui button" [routerLink]="['/videos']">Videos</button>
         </div>
       </div>
     </div>
