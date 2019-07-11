@@ -13,21 +13,19 @@ export class MediaService {
 
   constructor(private http: HttpClient) {}
 
-  getMedia(type: string, searchParams: string) {
-    switch (type) {
-      case '/pictures': {
-        return this.http.get(
-          `${this.PICS_API_PATH}?key=${this.PICS_API_KEY}&q=${searchParams}`
-        );
-      }
+  getPictures(type: string, searchParams: string, page: number) {
+    return this.http.get(
+      `${this.PICS_API_PATH}?key=${
+        this.PICS_API_KEY
+      }&q=${searchParams}&page=${page}`
+    );
+  }
 
-      case '/videos': {
-        return this.http.get(
-          `${this.YT_PATH}/search?key=${
-            this.YT_KEY
-          }&part=snippet&type=video&videoEmbeddable=true&q=${searchParams}`
-        );
-      }
-    }
+  getVideos(type: string, searchParams: string) {
+    return this.http.get(
+      `${this.YT_PATH}/search?key=${
+        this.YT_KEY
+      }&part=snippet&type=video&maxResults=50&videoEmbeddable=true&q=${searchParams}`
+    );
   }
 }

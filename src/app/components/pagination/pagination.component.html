@@ -1,0 +1,16 @@
+<div class="ui segment pagination">
+  <span class="ui segment">{{ totalPages() }} Pages</span>
+  <button class="ui button" (click)="onPrev()" [disabled]="page === 1">
+    Previous
+  </button>
+  <button
+    class="ui button"
+    *ngFor="let num of getPages()"
+    (click)="onPage(num)"
+  >
+    {{ num }}
+  </button>
+  <button class="ui button" (click)="onNext()" [disabled]="lastPage()">
+    Next
+  </button>
+</div>

@@ -1,20 +1,14 @@
 <app-nav-bar class="sticky" (searchEvent)="getMedia($event)"></app-nav-bar>
 
 <!-- Pictures -->
-<div
-  *ngIf="data && routeParams === '/pictures'"
-  class="ui container under-header"
->
-  <div *ngFor="let item of data.hits" class="ui segment">
-    <img src="{{ item.largeImageURL }}" />
+<div *ngIf="routeParams.includes('pictures')" class="ui container under-header">
+  <div *ngFor="let picture of pictures" class="ui segment">
+    <img src="{{ picture.largeImageURL }}" />
   </div>
 </div>
 
 <!-- Videos -->
-<div
-  *ngIf="data && routeParams === '/videos'"
-  class="ui container under-header"
->
+<div *ngIf="routeParams.includes('videos')" class="ui container under-header">
   <div class="ui grid">
     <!-- Selected video -->
     <div class="eleven wide column">
@@ -28,13 +22,13 @@
 
       <div class="ui segment">
         <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
-        <p>{{selectedVideo.snippet.description}}</p>
+        <p>{{ selectedVideo.snippet.description }}</p>
       </div>
     </div>
 
     <!-- Videos list -->
     <div class="five wide column">
-      <div *ngFor="let video of data.items" (click)="selectVideo(video)">
+      <div *ngFor="let video of videos" (click)="selectVideo(video)">
         <img
           alt="{{ video.snippet.title }}"
           class="ui image"
@@ -47,3 +41,13 @@
     </div>
   </div>
 </div>
+
+<!-- Change these values !!!!!!!!!!!! -->
+<app-pagination
+  [page]="page"
+  [totalItems]="total"
+  [perPage]="limit"
+  (goPrev)="prevPage()"
+  (goNext)="nextPage()"
+  (goPage)="goToPage($event)"
+></app-pagination>

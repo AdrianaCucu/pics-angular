@@ -6,11 +6,17 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MediaComponent } from './components/media/media.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 import { MediaService } from './services/media.service';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, MediaComponent],
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    MediaComponent,
+    PaginationComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
