@@ -1,1 +1,11 @@
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100% !important;
+  z-index: 2;
+}
 
+.under-header {
+  position: relative;
+  top: 8vh;
+}

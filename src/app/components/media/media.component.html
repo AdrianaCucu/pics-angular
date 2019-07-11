@@ -1,2 +1,7 @@
-<app-nav-bar (searchEvent)="getMedia($event)"></app-nav-bar>
-<app-media-list *ngIf="data" [data]="data" [params]="routeParams"></app-media-list>
+<app-nav-bar class="sticky" (searchEvent)="getMedia($event)"></app-nav-bar>
+<app-media-list
+  class="under-header"
+  *ngIf="data"
+  [data]="data"
+  [params]="routeParams"
+></app-media-list>
