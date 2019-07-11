@@ -10,8 +10,8 @@ import { MediaService } from 'src/app/services/media.service';
   styleUrls: ['./media.component.css']
 })
 export class MediaComponent {
-  pictures: [];
-  videos: [];
+  pictures: any;
+  videos: any;
   routeParams: any;
 
   queryParams: string; // the user input
@@ -67,7 +67,9 @@ export class MediaComponent {
     this.mediaService.getVideos(this.queryParams).subscribe(data => {
       this.videos = data['items'];
       // console.log(data);
-      this.selectVideo(this.videos[0]);
+      if (this.videos.length) {
+        this.selectVideo(this.videos[0]);
+      }
       this.total = this.videos.length;
       // console.log('video total', this.total);
       this.contentLoading = false;
