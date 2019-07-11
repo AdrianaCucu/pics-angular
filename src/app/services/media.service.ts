@@ -25,7 +25,7 @@ export class MediaService {
     return this.http.get(
       `${this.YT_PATH}/search?key=${
         this.YT_KEY
-      }&part=snippet&type=video&maxResults=50&videoEmbeddable=true&q=${searchParams}`
+      }&part=snippet&type=video&maxResults=5&videoEmbeddable=true&q=${searchParams}`
     );
   }
 }

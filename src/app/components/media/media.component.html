@@ -1,14 +1,20 @@
 <app-nav-bar class="sticky" (searchEvent)="getMedia($event)"></app-nav-bar>
 
 <!-- Pictures -->
-<div *ngIf="routeParams.includes('pictures')" class="ui container under-header">
+<div
+  *ngIf="routeParams.includes('pictures')"
+  class="ui container pictures-container"
+>
   <div *ngFor="let picture of pictures" class="ui segment">
     <img src="{{ picture.largeImageURL }}" />
   </div>
 </div>
 
 <!-- Videos -->
-<div *ngIf="routeParams.includes('videos')" class="ui container under-header">
+<div
+  *ngIf="routeParams.includes('videos')"
+  class="ui container videos-container"
+>
   <div class="ui grid">
     <!-- Selected video -->
     <div class="eleven wide column">
@@ -44,6 +50,7 @@
 
 <!-- Change these values !!!!!!!!!!!! -->
 <app-pagination
+  *ngIf="routeParams.includes('pictures')"
   [page]="page"
   [totalItems]="total"
   [perPage]="limit"

@@ -38,8 +38,14 @@ export class MediaComponent {
     this.queryParams = queryParams;
     if (this.routeParams.includes('pictures')) {
       this.getPictures();
+      this.router.navigate(['/pictures'], {
+        queryParams: { q: queryParams, page: this.page }
+      });
     } else if (this.routeParams.includes('videos')) {
       this.getVideos();
+      this.router.navigate(['/videos'], {
+        queryParams: { q: queryParams }
+      });
     }
   }
 
