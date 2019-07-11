@@ -20,7 +20,7 @@
         ></iframe>
       </div>
 
-      <div class="ui segment">
+      <div *ngIf="selectedVideo" class="ui segment">
         <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
         <p>{{ selectedVideo.snippet.description }}</p>
       </div>

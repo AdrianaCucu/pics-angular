@@ -34,7 +34,7 @@ export class PaginationComponent {
   }
 
   lastPage(): boolean {
-    return this.perPage * this.page > this.totalItems;
+    return this.perPage * this.page > this.totalItems - 1;
   }
 
   getPages(): number[] {

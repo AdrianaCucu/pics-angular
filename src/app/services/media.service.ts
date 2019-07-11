@@ -13,7 +13,7 @@ export class MediaService {
 
   constructor(private http: HttpClient) {}
 
-  getPictures(type: string, searchParams: string, page: number) {
+  getPictures(searchParams: string, page: number) {
     return this.http.get(
       `${this.PICS_API_PATH}?key=${
         this.PICS_API_KEY
@@ -21,7 +21,7 @@ export class MediaService {
     );
   }
 
-  getVideos(type: string, searchParams: string) {
+  getVideos(searchParams: string) {
     return this.http.get(
       `${this.YT_PATH}/search?key=${
         this.YT_KEY
