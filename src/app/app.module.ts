@@ -15,8 +15,8 @@ import { MediaService } from './services/media.service';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '', component: MediaComponent, pathMatch: 'full' },
       { path: 'pictures', component: MediaComponent, pathMatch: 'full' },
+      { path: '', redirectTo: '/pictures', pathMatch: 'full' },
       { path: 'videos', component: MediaComponent, pathMatch: 'full' }
     ])
   ],

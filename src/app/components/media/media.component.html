@@ -1,5 +1,6 @@
 <app-nav-bar class="sticky" (searchEvent)="getMedia($event)"></app-nav-bar>
 
+<!-- Pictures -->
 <div
   *ngIf="data && routeParams === '/pictures'"
   class="ui container under-header"
@@ -9,6 +10,7 @@
   </div>
 </div>
 
+<!-- Videos -->
 <div
   *ngIf="data && routeParams === '/videos'"
   class="ui container under-header"
@@ -25,17 +27,14 @@
       </div>
 
       <div class="ui segment">
-        <h4 class="ui header">hi</h4>
-        <p>description here</p>
+        <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
+        <p>{{selectedVideo.snippet.description}}</p>
       </div>
     </div>
 
     <!-- Videos list -->
     <div class="five wide column">
-      <div
-        *ngFor="let video of data.items"
-        (click)="selectVideo(video.id.videoId)"
-      >
+      <div *ngFor="let video of data.items" (click)="selectVideo(video)">
         <img
           alt="{{ video.snippet.title }}"
           class="ui image"

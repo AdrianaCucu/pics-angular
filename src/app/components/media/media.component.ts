@@ -11,7 +11,7 @@ import { MediaService } from 'src/app/services/media.service';
 })
 export class MediaComponent {
   data: any;
-  selectedVideoId: string;
+  selectedVideo: any;
 
   routeParams: any;
 
@@ -29,18 +29,20 @@ export class MediaComponent {
     this.mediaService.getMedia(this.routeParams, search).subscribe(data => {
       this.data = data;
       // console.log(this.data);
-      this.selectVideo(this.data.items[0].id.videoId);
+      if (this.routeParams === '/videos') {
+        this.selectVideo(this.data.items[0]);
+      }
     });
   }
 
-  selectVideo(id) {
-    // console.log(id);
-    this.selectedVideoId = id;
+  selectVideo(video) {
+    // console.log(video);
+    this.selectedVideo = video;
   }
 
   getVideoUrl() {
     return this.sanitiser.bypassSecurityTrustResourceUrl(
-      `https://www.youtube.com/embed/${this.selectedVideoId}`
+      `https://www.youtube.com/embed/${this.selectedVideo.id.videoId}`
     );
   }
 }
