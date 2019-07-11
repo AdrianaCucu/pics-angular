@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-
-import { PicsService } from 'src/app/services/pics.service';
 import { Router } from '@angular/router';
+
+import { MediaService } from 'src/app/services/media.service';
 
 @Component({
   selector: 'app-media',
@@ -13,13 +13,13 @@ export class MediaComponent {
 
   routeParams: any;
 
-  constructor(private picsService: PicsService, private router: Router) {
+  constructor(private mediaService: MediaService, private router: Router) {
     this.routeParams = router.url;
     console.log(this.routeParams);
   }
 
   getMedia(search: string) {
-    this.picsService.getMedia(this.routeParams, search).subscribe(data => {
+    this.mediaService.getMedia(this.routeParams, search).subscribe(data => {
       this.data = data;
       console.log(this.data);
     });

@@ -8,7 +8,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MediaComponent } from './components/media/media.component';
 import { MediaListComponent } from './components/media-list/media-list.component';
 
-import { PicsService } from './services/pics.service';
+import { MediaService } from './services/media.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { PicsService } from './services/pics.service';
       { path: 'videos', component: MediaComponent, pathMatch: 'full' }
     ])
   ],
-  providers: [PicsService],
+  providers: [MediaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
