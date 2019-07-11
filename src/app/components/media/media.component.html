@@ -1,7 +1,37 @@
 <app-nav-bar class="sticky" (searchEvent)="getMedia($event)"></app-nav-bar>
-<app-media-list
-  class="under-header"
-  *ngIf="data"
-  [data]="data"
-  [params]="routeParams"
-></app-media-list>
+
+<div *ngIf="data && routeParams === '/pictures'" class="ui container under-header">
+  <div *ngFor="let item of data.hits" class="ui segment">
+    <img src="{{ item.largeImageURL }}" />
+  </div>
+</div>
+
+<div *ngIf="data && routeParams === '/videos'" class="ui container under-header">
+  <div class="ui grid">
+    <div class="eleven wide column">
+      <div class="ui embed">
+        <iframe
+          title="video player"
+          src="https://www.youtube.com/embed/hY7m5jjJ9mM"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="ui segment">
+        <h4 class="ui header">hi</h4>
+        <p>description here</p>
+      </div>
+    </div>
+    <div class="five wide column">
+      <div *ngFor="let video of data.items">
+        <img
+          alt="{{ video.snippet.title }}"
+          class="ui image"
+          src="{{ video.snippet.thumbnails.medium.url }}"
+        />
+        <div class="content">
+          <div class="header">{{ video.snippet.title }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

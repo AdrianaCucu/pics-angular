@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MediaComponent } from './components/media/media.component';
-import { MediaListComponent } from './components/media-list/media-list.component';
 
 import { MediaService } from './services/media.service';
 
@@ -14,8 +13,7 @@ import { MediaService } from './services/media.service';
   declarations: [
     AppComponent,
     NavBarComponent,
-    MediaComponent,
-    MediaListComponent
+    MediaComponent
   ],
   imports: [
     BrowserModule,
