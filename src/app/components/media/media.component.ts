@@ -55,7 +55,7 @@ export class MediaComponent {
       .getPictures(this.queryParams, this.page)
       .subscribe(data => {
         this.pictures = data['hits'];
-        console.log(data);
+        // console.log(data);
         this.total = 200;
         this.limit = this.pictures.length;
         this.contentLoading = false;
@@ -66,12 +66,10 @@ export class MediaComponent {
     this.contentLoading = true;
     this.mediaService.getVideos(this.queryParams).subscribe(data => {
       this.videos = data['items'];
-      console.log(data);
-
+      // console.log(data);
       this.selectVideo(this.videos[0]);
       this.total = this.videos.length;
       // console.log('video total', this.total);
-
       this.contentLoading = false;
     });
   }
