@@ -18,54 +18,62 @@
   <div class="ui grid">
     <!-- Selected video -->
     <div class="eleven wide column">
-      <div class="ui embed">
-        <iframe
-          title="video player"
-          [src]="getVideoUrl()"
-          allowfullscreen
-        ></iframe>
-      </div>
+      <div class="selected-video">
+        <div class="ui embed">
+          <iframe
+            title="video player"
+            [src]="getVideoUrl()"
+            allowfullscreen
+          ></iframe>
+        </div>
 
-      <div *ngIf="selectedVideo" class="ui segment">
-        <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
-        <p>{{ selectedVideo.snippet.description }}</p>
+        <div *ngIf="selectedVideo" class="ui segment">
+          <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
+          <p>{{ selectedVideo.snippet.description }}</p>
+        </div>
       </div>
     </div>
 
     <!-- Videos list -->
     <div class="five wide column">
-      <div *ngFor="let video of videos" (click)="selectVideo(video)">
+      <div
+        class="ui segment video-snippet"
+        *ngFor="let video of videos"
+        (click)="selectVideo(video)"
+      >
         <img
           alt="{{ video.snippet.title }}"
           class="ui image"
           src="{{ video.snippet.thumbnails.medium.url }}"
         />
         <div class="content">
-          <div class="header">{{ video.snippet.title }}</div>
+          <div class="header">
+            {{ video.snippet.title }}
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Change these values !!!!!!!!!!!! -->
+  <app-pagination
+    *ngIf="routeParams.includes('pictures')"
+    [page]="page"
+    [totalItems]="total"
+    [perPage]="limit"
+    (goPrev)="prevPage()"
+    (goNext)="nextPage()"
+    (goPage)="goToPage($event)"
+  ></app-pagination>
+
+  <footer class="ui inverted center aligned segment">
+    <p>
+      Made with
+      <span id="heart"> ❤ </span>
+      by A.C. ⠀· ⠀
+      <a href="https://github.com/AdrianaCucu" target="_blank">
+        GitHub
+      </a>
+    </p>
+  </footer>
 </div>
-
-<!-- Change these values !!!!!!!!!!!! -->
-<app-pagination
-  *ngIf="routeParams.includes('pictures')"
-  [page]="page"
-  [totalItems]="total"
-  [perPage]="limit"
-  (goPrev)="prevPage()"
-  (goNext)="nextPage()"
-  (goPage)="goToPage($event)"
-></app-pagination>
-
-<footer class="ui inverted center aligned segment">
-  <p>
-    Made with
-    <span id="heart"> ❤ </span>
-    by A.C. ⠀· ⠀
-    <a href="https://github.com/AdrianaCucu" target="_blank">
-      GitHub
-    </a>
-  </p>
-</footer>

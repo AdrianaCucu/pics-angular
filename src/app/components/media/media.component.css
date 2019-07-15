@@ -1,11 +1,20 @@
 footer {
   position: fixed !important;
   bottom: 0;
+  left: 0;
   width: 100%;
   height: 3vh;
   font-size: 1.5vh !important;
   padding: 0 !important;
   z-index: 2;
+}
+
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  color: #76c1d4;
 }
 
 img {
@@ -24,9 +33,20 @@ img {
   margin: 10vh 0;
 }
 
+.selected-video {
+  position: fixed;
+  max-width: 40%;
+}
+
 .videos-container {
   position: relative;
   top: 10vh;
+  margin-bottom: 5vh;
+}
+
+.video-snippet:hover {
+  cursor: pointer;
+  color: #76c1d4;
 }
 
 @media only screen and (min-width: 500px) and (max-width: 1100px) {
