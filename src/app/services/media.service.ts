@@ -21,20 +21,20 @@ export class MediaService {
     );
   }
 
-  getVideos(searchParams: string, pageToken?: string) {
+  getVideos(searchParams: string, pageToken: string) {
     // console.log(pageToken);
-    
-    if (pageToken === undefined) {
+
+    if (pageToken === '') {
       return this.http.get(
         `${this.YT_PATH}/search?key=${
           this.YT_KEY
-        }&part=snippet&type=video&maxResults=10&videoEmbeddable=true&q=${searchParams}`
+        }&part=snippet&type=video&maxResults=6&videoEmbeddable=true&q=${searchParams}`
       );
     } else {
       return this.http.get(
         `${this.YT_PATH}/search?key=${
           this.YT_KEY
-        }&part=snippet&type=video&maxResults=10&videoEmbeddable=true&q=${searchParams}&pageToken=${pageToken}`
+        }&part=snippet&type=video&maxResults=6&videoEmbeddable=true&q=${searchParams}&pageToken=${pageToken}`
       );
     }
   }

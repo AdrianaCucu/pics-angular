@@ -17,7 +17,7 @@ export class MediaComponent {
   queryParams: string; // the user input
 
   selectedVideo: any;
-  nextPageToken: string;
+  nextPageToken = '';
 
   page = 1;
   total = 0;
@@ -79,6 +79,7 @@ export class MediaComponent {
         this.videos.length
           ? this.selectVideo(this.videos[0])
           : this.selectVideo({});
+        // console.log(this.videos.length);
 
         this.total = 50;
         // console.log(this.total);
