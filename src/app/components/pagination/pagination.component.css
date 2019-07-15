@@ -1,9 +1,13 @@
+button:hover {
+  background: #76c1d4 !important;
+}
+
 .pagination {
   position: fixed;
   bottom: 2.5vh;
   width: 100%;
   justify-content: center !important;
-  z-index: 2;
+  z-index: 5;
 }
 
 @media only screen and (max-width: 1100px) {
