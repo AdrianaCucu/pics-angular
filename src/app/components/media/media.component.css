@@ -35,7 +35,7 @@ img {
 
 .selected-video {
   position: fixed;
-  max-width: 40%;
+  width: 40vw;
 }
 
 .videos-container {
@@ -54,6 +54,11 @@ img {
     margin: 11vh 0;
   }
 
+  .selected-video {
+    width: 63vw;
+  }
+
+
   .videos-container {
     top: 11vh;
   }
@@ -63,6 +68,11 @@ img {
   .pictures-container {
     margin: 14vh 0;
   }
+
+  .selected-video {
+    width: 65vw;
+  }
+
 
   .videos-container {
     top: 14vh;
