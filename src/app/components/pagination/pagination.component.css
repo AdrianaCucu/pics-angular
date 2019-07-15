@@ -1,3 +1,7 @@
+.button {
+  font-size: 1.3vh !important;
+}
+
 button:hover {
   background: #76c1d4 !important;
 }
