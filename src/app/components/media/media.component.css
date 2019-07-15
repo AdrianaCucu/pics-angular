@@ -22,13 +22,6 @@ img {
   max-height: 100%;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100% !important;
-  z-index: 2;
-}
-
 .pictures-container {
   margin: 10vh 0;
 }
@@ -55,7 +48,7 @@ img {
   }
 
   .selected-video {
-    width: 63vw;
+    top: 11vh;
   }
 
   .videos-container {
@@ -69,7 +62,7 @@ img {
   }
 
   .selected-video {
-    width: 65vw;
+    top: 14vh;
   }
 
   .videos-container {
