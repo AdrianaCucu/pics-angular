@@ -34,13 +34,13 @@ img {
 }
 
 .selected-video {
-  position: fixed;
-  width: 40vw;
+  position: sticky;
+  top: 12vh;
 }
 
 .videos-container {
   position: relative;
-  top: 10vh;
+  top: 12vh;
   margin-bottom: 5vh;
 }
 
@@ -58,7 +58,6 @@ img {
     width: 63vw;
   }
 
-
   .videos-container {
     top: 11vh;
   }
@@ -72,7 +71,6 @@ img {
   .selected-video {
     width: 65vw;
   }
-
 
   .videos-container {
     top: 14vh;
