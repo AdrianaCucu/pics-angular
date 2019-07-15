@@ -5,6 +5,7 @@ button:hover {
 .pagination {
   position: fixed;
   bottom: 2.5vh;
+  left: 0;
   width: 100%;
   justify-content: center !important;
   z-index: 5;

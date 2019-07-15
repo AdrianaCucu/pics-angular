@@ -5,8 +5,23 @@
   *ngIf="routeParams.includes('pictures')"
   class="ui container pictures-container"
 >
-  <div *ngFor="let picture of pictures" class="ui segment">
-    <img src="{{ picture.largeImageURL }}" />
+  <div *ngIf="pictures.length">
+    <div *ngFor="let picture of pictures" class="ui segment">
+      <img src="{{ picture.largeImageURL }}" />
+    </div>
+
+    <app-pagination
+      [page]="page"
+      [totalItems]="total"
+      [perPage]="limit"
+      (goPrev)="prevPage()"
+      (goNext)="nextPage()"
+      (goPage)="goToPage($event)"
+    ></app-pagination>
+  </div>
+
+  <div *ngIf="!pictures.length" class="ui header">
+    No pictures found. Sorry!
   </div>
 </div>
 
@@ -15,7 +30,7 @@
   *ngIf="routeParams.includes('videos')"
   class="ui container videos-container"
 >
-  <div class="ui grid">
+  <div *ngIf="videos.length" class="ui grid">
     <!-- Selected video -->
     <div class="eleven wide column">
       <div class="selected-video">
@@ -54,17 +69,11 @@
       </div>
     </div>
   </div>
-</div>
 
-<app-pagination
-  *ngIf="routeParams.includes('pictures')"
-  [page]="page"
-  [totalItems]="total"
-  [perPage]="limit"
-  (goPrev)="prevPage()"
-  (goNext)="nextPage()"
-  (goPage)="goToPage($event)"
-></app-pagination>
+  <div *ngIf="!videos.length" class="ui header">
+    No videos found. Sorry!
+  </div>
+</div>
 
 <footer class="ui inverted center aligned segment">
   <p>
