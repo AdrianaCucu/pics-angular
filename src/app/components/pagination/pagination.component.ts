@@ -39,6 +39,8 @@ export class PaginationComponent {
 
   getPages(): number[] {
     const pages: number[] = [];
+    // console.log(this.totalItems)
+    // console.log(this.perPage)
     for (let i = 0; i < Math.ceil(this.totalItems / this.perPage); i++) {
       pages.push(i + 1);
     }

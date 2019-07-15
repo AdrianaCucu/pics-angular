@@ -55,10 +55,10 @@ export class MediaComponent {
       .getPictures(this.queryParams, this.page)
       .subscribe(data => {
         data ? (this.pictures = data['hits']) : (this.pictures = []);
-        console.log(data);
+        // console.log(data);
         // console.log(this.pictures)
-        this.total = this.pictures.length > 200 ? 200 : this.pictures.length;
-        console.log(this.total);
+        this.total = data['totalHits'] > 200 ? 200 : this.pictures.length;
+        // console.log(this.total);
         this.limit = this.pictures.length;
         this.contentLoading = false;
       });
