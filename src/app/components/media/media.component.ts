@@ -17,7 +17,6 @@ export class MediaComponent {
   queryParams: string; // the user input
 
   selectedVideo: any;
-  nextPageToken = '';
 
   page = 1;
   total = 0;
@@ -67,25 +66,17 @@ export class MediaComponent {
 
   getVideos(): void {
     this.contentLoading = true;
-    this.mediaService
-      .getVideos(this.queryParams, this.nextPageToken)
-      .subscribe(data => {
-        this.videos = data['items'];
-        // console.log(data);
+    this.mediaService.getVideos(this.queryParams).subscribe(data => {
+      this.videos = data['items'];
+      // console.log(data);
 
-        this.nextPageToken = data['nextPageToken'];
-        // console.log(this.nextPageToken);
+      this.videos.length
+        ? this.selectVideo(this.videos[0])
+        : this.selectVideo({});
+      // console.log(this.videos.length);
 
-        this.videos.length
-          ? this.selectVideo(this.videos[0])
-          : this.selectVideo({});
-        // console.log(this.videos.length);
-
-        this.total = 50;
-        // console.log(this.total);
-        this.limit = this.videos.length;
-        this.contentLoading = false;
-      });
+      this.contentLoading = false;
+    });
   }
 
   selectVideo(video): void {

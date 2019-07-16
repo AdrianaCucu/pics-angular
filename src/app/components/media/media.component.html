@@ -68,15 +68,6 @@
         </div>
       </div>
     </div>
-
-    <app-pagination
-      [page]="page"
-      [totalItems]="total"
-      [perPage]="limit"
-      (goPrev)="prevPage()"
-      (goNext)="nextPage()"
-      (goPage)="goToPage($event)"
-    ></app-pagination>
   </div>
 
   <div *ngIf="!videos.length" class="ui header">
