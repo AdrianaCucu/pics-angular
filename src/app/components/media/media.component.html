@@ -5,8 +5,8 @@
   *ngIf="routeParams.includes('pictures')"
   class="ui container pictures-container"
 >
-  <div *ngIf="pictures.length">
-    <div *ngFor="let picture of pictures" class="ui segment">
+  <div *ngIf="pictures.length" class="image-list">
+    <div *ngFor="let picture of pictures; let i = index" class="item-{{i}}">
       <img src="{{ picture.largeImageURL }}" />
     </div>
 

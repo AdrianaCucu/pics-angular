@@ -17,9 +17,59 @@ footer a:hover {
   color: #76c1d4;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 4vw);
+  grid-gap: 15px;
+}
+
+.image-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-0 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.item-1 {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.item-2 {
+  grid-column-start: 5;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 6;
+}
+
+.item-3 {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 6;
+}
+
+.item-4 {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 6;
+  grid-row-end: 9;
+}
+
+.item-5 {
+  grid-column-start: 5;
+  grid-column-end: 9;
+  grid-row-start: 6;
+  grid-row-end: 9;
 }
 
 .pages-container {
@@ -46,7 +96,8 @@ img {
 }
 
 .pictures-container {
-  margin: 10vh 0;
+  position: sticky;
+  top: 12vh;
 }
 
 .selected-video {
@@ -66,6 +117,10 @@ img {
 }
 
 @media only screen and (min-width: 500px) and (max-width: 1100px) {
+  .image-list {
+    grid-template-rows: repeat(8, 10vw);
+  }
+
   .pagination .button {
     width: 8vw;
   }
@@ -84,8 +139,12 @@ img {
 }
 
 @media only screen and (max-width: 450px) {
+  .image-list {
+    grid-template-rows: repeat(8, 12vw);
+  }
+
   .pagination .button {
-    width: 10.5vw;
+    width: 10vw;
   }
 
   .pictures-container {

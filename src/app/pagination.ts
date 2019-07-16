@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 export class Pagination {
   page: number = 1;
   totalItems: number = 200;
-  perPage: number = 5;
+  perPage: number = 6;
   offset: number = 2;
   input: string = '';
 
