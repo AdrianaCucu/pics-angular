@@ -13,11 +13,11 @@ export class MediaService {
 
   constructor(private http: HttpClient) {}
 
-  getPictures(searchParams: string, page: number) {
+  getPictures(searchParams: string, page: number, perPage: number) {
     return this.http.get(
       `${this.PICS_API_PATH}?key=${
         this.PICS_API_KEY
-      }&q=${searchParams}&page=${page}`
+      }&q=${searchParams}&page=${page}&per_page=${perPage}`
     );
   }
 

@@ -4,6 +4,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { MediaService } from 'src/app/services/media.service';
 
+import { Pagination } from 'src/app/pagination';
+
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
@@ -18,10 +20,9 @@ export class MediaComponent {
 
   selectedVideo: any;
 
-  page = 1;
-  total = 0;
-  limit = 5;
   contentLoading = false;
+
+  pagination: Pagination = new Pagination();
 
   constructor(
     private mediaService: MediaService,
@@ -38,30 +39,31 @@ export class MediaComponent {
     this.queryParams = queryParams;
     if (this.routeParams.includes('pictures')) {
       this.getPictures();
-      this.router.navigate(['/pictures'], {
-        queryParams: { q: queryParams, page: this.page }
-      });
     } else if (this.routeParams.includes('videos')) {
       this.getVideos();
-      this.router.navigate(['/videos'], {
-        queryParams: { q: queryParams }
-      });
     }
   }
 
   getPictures(): void {
     this.contentLoading = true;
     this.mediaService
-      .getPictures(this.queryParams, this.page)
+      .getPictures(
+        this.queryParams,
+        this.pagination.page,
+        this.pagination.perPage
+      )
       .subscribe(data => {
         data ? (this.pictures = data['hits']) : (this.pictures = []);
         // console.log(data);
         // console.log(this.pictures)
-        this.total = data['totalHits'] > 200 ? 200 : this.pictures.length;
-        // console.log(this.total);
-        this.limit = this.pictures.length;
+        this.pagination.update(undefined, data['totalHits'], undefined);
+        // console.log(this.pagination);
         this.contentLoading = false;
       });
+
+    this.router.navigate(['/pictures'], {
+      queryParams: { q: this.queryParams, page: this.pagination.page }
+    });
   }
 
   getVideos(): void {
@@ -77,6 +79,10 @@ export class MediaComponent {
 
       this.contentLoading = false;
     });
+
+    this.router.navigate(['/videos'], {
+      queryParams: { q: this.queryParams }
+    });
   }
 
   selectVideo(video): void {
@@ -90,20 +96,5 @@ export class MediaComponent {
         `https://www.youtube.com/embed/${this.selectedVideo.id.videoId}`
       );
     }
-  }
-
-  goToPage(num: number): void {
-    this.page = num;
-    this.getMedia(this.queryParams);
-  }
-
-  nextPage(): void {
-    this.page++;
-    this.getMedia(this.queryParams);
-  }
-
-  prevPage(): void {
-    this.page--;
-    this.getMedia(this.queryParams);
   }
 }

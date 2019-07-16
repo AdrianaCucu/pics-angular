@@ -10,14 +10,44 @@
       <img src="{{ picture.largeImageURL }}" />
     </div>
 
-    <app-pagination
-      [page]="page"
-      [totalItems]="total"
-      [perPage]="limit"
-      (goPrev)="prevPage()"
-      (goNext)="nextPage()"
-      (goPage)="goToPage($event)"
-    ></app-pagination>
+    <!-- Pagination -->
+    <div class="ui inverted center aligned segment pagination">
+      <button
+        class="ui button"
+        (click)="pagination.onPrev(); getPictures()"
+        [disabled]="pagination.page === 1"
+      >
+        <
+      </button>
+
+      <div class="pages-container" *ngFor="let num of pagination.getPages()">
+        <button
+          class="ui button"
+          *ngIf="num !== pagination.page"
+          (click)="pagination.goToPage(num); getPictures()"
+          [disabled]="num === '...'"
+        >
+          {{ num }}
+        </button>
+
+        <button
+          class="ui button active-button"
+          *ngIf="num === pagination.page"
+          (click)="pagination.goToPage(num); getPictures()"
+          [disabled]="num === '...'"
+        >
+          {{ num }}
+        </button>
+      </div>
+
+      <button
+        class="ui button"
+        (click)="pagination.onNext(); getPictures()"
+        [disabled]="pagination.lastPage()"
+      >
+        >
+      </button>
+    </div>
   </div>
 
   <div *ngIf="!pictures.length" class="ui header">
