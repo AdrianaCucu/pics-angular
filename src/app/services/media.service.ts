@@ -15,22 +15,22 @@ export class MediaService {
   constructor(private http: HttpClient) {}
 
   getPictures(
-    searchParams: string,
+    input: string,
     page: number,
     perPage: number
   ): Observable<object> {
     return this.http.get(
       `${this.PICS_API_PATH}?key=${
         this.PICS_API_KEY
-      }&q=${searchParams}&page=${page}&per_page=${perPage}`
+      }&q=${input}&page=${page}&per_page=${perPage}`
     );
   }
 
-  getVideos(searchParams: string): Observable<object> {
+  getVideos(input: string): Observable<object> {
     return this.http.get(
       `${this.YT_PATH}/search?key=${
         this.YT_KEY
-      }&part=snippet&type=video&maxResults=6&videoEmbeddable=true&q=${searchParams}`
+      }&part=snippet&type=video&maxResults=6&videoEmbeddable=true&q=${input}`
     );
   }
 }

@@ -18,7 +18,7 @@ export class MediaComponent {
 
   input: string; // the user input
 
-  selectedVideo: {};
+  selectedVideo: any;
 
   contentLoading: boolean = false;
 
@@ -39,6 +39,8 @@ export class MediaComponent {
 
   getMedia(input: string): void {
     this.input = input;
+    this.pagination.updateInput(this.input);
+
     if (this.routeParams.includes('pictures')) {
       this.getPictures();
     } else if (this.routeParams.includes('videos')) {
@@ -48,8 +50,7 @@ export class MediaComponent {
 
   getPictures(): void {
     this.contentLoading = true;
-    this.pagination.updateInput(this.input);
-    this.pagination.getData().subscribe(data => {
+    this.pagination.getData('pictures').subscribe(data => {
       data ? (this.pictures = data['hits']) : (this.pictures = []);
       // console.log(data);
       // console.log(this.pictures)
@@ -65,15 +66,16 @@ export class MediaComponent {
 
   getVideos(): void {
     this.contentLoading = true;
-    this.mediaService.getVideos(this.input).subscribe(data => {
-      this.videos = data['items'];
+
+    this.pagination.getData('videos').subscribe(data => {
+      data ? (this.videos = data['items']) : (this.videos = []);
       // console.log(data);
+      // console.log(this.videos)
 
       this.videos.length
         ? this.selectVideo(this.videos[0])
         : this.selectVideo({});
       // console.log(this.videos.length);
-
       this.contentLoading = false;
     });
 

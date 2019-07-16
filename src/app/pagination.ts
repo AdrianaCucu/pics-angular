@@ -22,9 +22,13 @@ export class Pagination {
     this.perPage = perPage || this.perPage;
   }
 
-  getData(): Observable<object> {
+  getData(type: string): Observable<object> {
     if (this.apiService instanceof MediaService) {
-      return this.apiService.getPictures(this.input, this.page, this.perPage);
+      if (type === 'pictures') {
+        return this.apiService.getPictures(this.input, this.page, this.perPage);
+      } else if (type === 'videos') {
+        return this.apiService.getVideos(this.input);
+      }
     }
   }
 
