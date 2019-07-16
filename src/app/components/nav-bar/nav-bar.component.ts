@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,6 +8,16 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class NavBarComponent {
   @Output() searchEvent = new EventEmitter();
+
+  media: string;
+
+  constructor(private router: Router) {
+    if (router.url.startsWith('/pictures')) {
+      this.media = 'pictures';
+    } else if (router.url.startsWith('/videos')) {
+      this.media = 'videos';
+    }
+  }
 
   enterSearch(event) {
     this.searchEvent.emit(event.target.value);

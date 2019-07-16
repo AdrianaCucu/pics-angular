@@ -13,7 +13,23 @@
       </div>
 
       <div class="item">
-        <div class="ui buttons">
+        <div class="ui buttons" *ngIf="media === 'pictures'">
+          <button
+            class="ui button active-button"
+            [routerLink]="['/pictures']"
+          >
+            Pictures
+          </button>
+          <div class="or"></div>
+          <button
+            class="ui button"
+            [routerLink]="['/videos']"
+          >
+            Videos
+          </button>
+        </div>
+
+        <div class="ui buttons" *ngIf="media === 'videos'">
           <button
             class="ui button"
             [routerLink]="['/pictures']"
@@ -22,7 +38,7 @@
           </button>
           <div class="or"></div>
           <button
-            class="ui button"
+            class="ui button active-button"
             [routerLink]="['/videos']"
           >
             Videos

@@ -1,4 +1,5 @@
-button:hover {
+button:hover,
+.active-button {
   background: #76c1d4 !important;
 }
 
