@@ -1,21 +1,44 @@
-import { stringify } from 'querystring';
+import { MediaService } from './services/media.service';
+import { Observable } from 'rxjs';
 
 export class Pagination {
   page: number = 1;
   totalItems: number = 200;
   perPage: number = 5;
   offset: number = 2;
+  input: string = '';
 
-  constructor(page?: number, totalItems?: number, perPage?: number) {
+  apiService: any;
+
+  constructor(
+    apiService: any,
+    page?: number,
+    totalItems?: number,
+    perPage?: number
+  ) {
+    this.apiService = apiService;
     this.page = page || this.page;
     this.totalItems = totalItems || this.totalItems;
     this.perPage = perPage || this.perPage;
   }
 
-  update(page?: number, totalItems?: number, perPage?: number) {
+  getData(): Observable<object> {
+    if (this.apiService instanceof MediaService) {
+      return this.apiService.getPictures(this.input, this.page, this.perPage);
+    }
+  }
+
+  update(page?: number, totalItems?: number, perPage?: number): void {
     this.page = page || this.page;
     this.totalItems = totalItems || this.totalItems;
     this.perPage = perPage || this.perPage;
+  }
+
+  updateInput(input: string): void {
+    if (input !== this.input) {
+      this.input = input;
+      this.page = 1;
+    }
   }
 
   goToPage(page: number): void {
