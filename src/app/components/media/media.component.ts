@@ -12,8 +12,8 @@ import { Pagination } from 'src/app/pagination';
   styleUrls: ['./media.component.css']
 })
 export class MediaComponent {
-  pictures: [];
-  videos: [];
+  pictures: any[];
+  videos: any[];
   routeParams: string;
 
   input: string; // the user input
@@ -72,10 +72,10 @@ export class MediaComponent {
       // console.log(data);
       // console.log(this.videos)
 
-      this.videos.length
-        ? this.selectVideo(this.videos[0])
-        : this.selectVideo({});
-      // console.log(this.videos.length);
+      if (this.videos.length !== 0) {
+        this.selectVideo(this.videos[0]);
+      }
+
       this.contentLoading = false;
     });
 
