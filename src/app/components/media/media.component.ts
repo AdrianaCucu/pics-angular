@@ -54,8 +54,12 @@ export class MediaComponent {
   onFileUpload(event: any, index: number): void {
     // console.log(event.target.files[0]);
     // console.log(index);
-    this.mediaService.updateUserFiles(event.target.files[0], index);
-    this.userFiles = this.mediaService.getUserFiles();
+    if (event.target.files[0]['type'].includes('image')) {
+      this.mediaService.updateUserFiles(event.target.files[0], index);
+      this.userFiles = this.mediaService.getUserFiles();
+    } else { console.log(event.target.files[0]['type'])
+      window.alert('Oops! The file you selected is not an image.');
+    }
   }
 
   onFileDelete(index: number): void {
