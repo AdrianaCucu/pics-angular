@@ -17,7 +17,7 @@
         (click)="pagination.onPrev(); getPictures()"
         [disabled]="pagination.page === 1"
       >
-        <
+        <i class="chevron left icon"></i>
       </button>
 
       <div class="pages-container" *ngFor="let num of pagination.getPages()">
@@ -45,7 +45,7 @@
         (click)="pagination.onNext(); getPictures()"
         [disabled]="pagination.lastPage()"
       >
-        >
+        <i class="chevron right icon"></i>
       </button>
     </div>
   </div>

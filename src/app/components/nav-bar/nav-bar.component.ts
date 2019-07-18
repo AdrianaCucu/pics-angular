@@ -16,6 +16,8 @@ export class NavBarComponent {
       this.media = 'pictures';
     } else if (router.url.startsWith('/videos')) {
       this.media = 'videos';
+    } else if (router.url.startsWith('/add')) {
+      this.media = 'add';
     }
   }
 

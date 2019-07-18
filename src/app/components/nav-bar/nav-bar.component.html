@@ -14,36 +14,38 @@
 
       <div class="item">
         <div class="ui buttons" *ngIf="media === 'pictures'">
-          <button
-            class="ui button active-button"
-            [routerLink]="['/pictures']"
-          >
+          <button class="ui button active-button" [routerLink]="['/pictures']">
             Pictures
           </button>
           <div class="or"></div>
-          <button
-            class="ui button"
-            [routerLink]="['/videos']"
-          >
+          <button class="ui button" [routerLink]="['/videos']">
             Videos
           </button>
         </div>
 
         <div class="ui buttons" *ngIf="media === 'videos'">
-          <button
-            class="ui button"
-            [routerLink]="['/pictures']"
-          >
+          <button class="ui button" [routerLink]="['/pictures']">
             Pictures
           </button>
           <div class="or"></div>
-          <button
-            class="ui button active-button"
-            [routerLink]="['/videos']"
-          >
+          <button class="ui button active-button" [routerLink]="['/videos']">
             Videos
           </button>
         </div>
+
+        <div class="ui buttons" *ngIf="media === 'add'">
+          <button class="ui button" [routerLink]="['/pictures']">
+            Pictures
+          </button>
+          <div class="or"></div>
+          <button class="ui button active-button" [routerLink]="['/videos']">
+            Videos
+          </button>
+        </div>
+
+        <button class="circular ui icon button" [routerLink]="['/add']">
+          <i class="icon plus"></i>
+        </button>
       </div>
     </div>
   </div>

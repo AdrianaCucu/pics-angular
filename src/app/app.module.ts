@@ -10,18 +10,15 @@ import { MediaComponent } from './components/media/media.component';
 import { MediaService } from './services/media.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent,
-    MediaComponent
-  ],
+  declarations: [AppComponent, NavBarComponent, MediaComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'pictures', component: MediaComponent, pathMatch: 'full' },
       { path: '', redirectTo: '/pictures', pathMatch: 'full' },
-      { path: 'videos', component: MediaComponent, pathMatch: 'full' }
+      { path: 'videos', component: MediaComponent, pathMatch: 'full' },
+      { path: 'add', component: MediaComponent, pathMatch: 'full' }
     ])
   ],
   providers: [MediaService],

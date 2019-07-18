@@ -4,6 +4,10 @@ button:hover,
   color: white !important;
 }
 
+.circular {
+  margin-left: 5px !important;
+}
+
 .sticky {
   position: fixed;
   top: 0;
