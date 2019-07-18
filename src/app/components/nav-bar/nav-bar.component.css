@@ -4,7 +4,16 @@ button:hover,
   color: white !important;
 }
 
-.circular {
+.padded {
+  padding: 0 2vw !important;
+}
+
+.pixabay-logo {
+  height: 2vw;
+  width: auto;
+}
+
+.spaced {
   margin-left: 5px !important;
 }
 
@@ -19,5 +28,13 @@ button:hover,
   button,
   .or {
     font-size: 2.5vmin !important;
+  }
+
+  .padded {
+    padding: 0 4vw !important;
+  }
+
+  .pixabay-logo {
+    height: 3vh;
   }
 }

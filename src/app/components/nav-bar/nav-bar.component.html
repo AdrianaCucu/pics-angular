@@ -14,38 +14,44 @@
 
       <div class="item">
         <div class="ui buttons" *ngIf="media === 'pictures'">
-          <button class="ui button active-button" [routerLink]="['/pictures']">
-            Pictures
+          <button
+            class="ui icon button active-button padded"
+            [routerLink]="['/pictures']"
+          >
+            <i class="camera retro icon"></i>
           </button>
           <div class="or"></div>
-          <button class="ui button" [routerLink]="['/videos']">
-            Videos
+          <button class="ui icon button padded" [routerLink]="['/videos']">
+            <i class="video icon"></i>
           </button>
         </div>
 
         <div class="ui buttons" *ngIf="media === 'videos'">
-          <button class="ui button" [routerLink]="['/pictures']">
-            Pictures
+          <button class="ui icon button padded" [routerLink]="['/pictures']">
+            <i class="camera retro icon"></i>
           </button>
           <div class="or"></div>
-          <button class="ui button active-button" [routerLink]="['/videos']">
-            Videos
+          <button
+            class="ui icon button active-button padded"
+            [routerLink]="['/videos']"
+          >
+            <i class="video icon"></i>
           </button>
         </div>
 
         <div class="ui buttons" *ngIf="media === 'add'">
-          <button class="ui button" [routerLink]="['/pictures']">
-            Pictures
+          <button class="ui icon button padded" [routerLink]="['/pictures']">
+            <i class="camera retro icon"></i>
           </button>
           <div class="or"></div>
-          <button class="ui button" [routerLink]="['/videos']">
-            Videos
+          <button class="ui icon button padded" [routerLink]="['/videos']">
+            <i class="video icon"></i>
           </button>
         </div>
 
         <button
           *ngIf="media === 'add'"
-          class="circular ui icon button active-button"
+          class="ui icon button active-button spaced"
           [routerLink]="['/add']"
         >
           <i class="icon plus"></i>
@@ -53,11 +59,23 @@
 
         <button
           *ngIf="media !== 'add'"
-          class="circular ui icon button"
+          class="ui icon button spaced"
           [routerLink]="['/add']"
         >
           <i class="icon plus"></i>
         </button>
+
+        <a
+          *ngIf="media === 'pictures'"
+          class="spaced"
+          href="https://pixabay.com/"
+          target="_blank"
+        >
+          <img
+            class="pixabay-logo"
+            src="./../../../assets/images/pixabay_logo.svg"
+          />
+        </a>
       </div>
     </div>
   </div>
