@@ -18,7 +18,7 @@ export class MediaService {
 
   constructor(private http: HttpClient) {}
 
-  getUserFiles(): object[] {
+  getUserFiles(): string[] {
     // console.log(this.userFiles);
     return this.userFiles;
   }
@@ -43,6 +43,11 @@ export class MediaService {
 
   updateUserFiles(file: File, index: number): void {
     this.getBase64(file, index);
+  }
+
+  deleteUserFile(index: number): void {
+    this.userFiles[index] = '';
+    localStorage.setItem('userFiles', JSON.stringify(this.userFiles));
   }
 
   getPictures(

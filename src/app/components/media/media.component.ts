@@ -14,7 +14,8 @@ import { Pagination } from 'src/app/pagination';
 export class MediaComponent {
   pictures: any[];
   videos: any[];
-  userFiles: any[];
+  userFiles: string[];
+
   routeParams: string;
 
   input: string; // the user input
@@ -51,9 +52,14 @@ export class MediaComponent {
   }
 
   onFileUpload(event: any, index: number): void {
-    console.log(event.target.files[0]);
-    console.log(index);
+    // console.log(event.target.files[0]);
+    // console.log(index);
     this.mediaService.updateUserFiles(event.target.files[0], index);
+    this.userFiles = this.mediaService.getUserFiles();
+  }
+
+  onFileDelete(index: number): void {
+    this.mediaService.deleteUserFile(index);
     this.userFiles = this.mediaService.getUserFiles();
   }
 

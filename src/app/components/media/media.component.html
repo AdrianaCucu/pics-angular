@@ -65,7 +65,7 @@
       *ngFor="let picture of userFiles; let i = index"
       class="ui image item-{{ i }}"
     >
-      <div class="no-image" *ngIf="!picture">
+      <div *ngIf="!picture" class="no-image">
         <input
           class="hidden"
           type="file"
@@ -77,68 +77,74 @@
         </button>
       </div>
 
-      <img *ngIf="picture" src="{{ picture }}" />
-    </div>
-  </div>
+      <div *ngIf="picture" class="user-image">
+        <img class="image" src="{{ picture }}" />
 
-  <!-- Videos -->
-  <div
-    *ngIf="routeParams.includes('videos')"
-    class="ui container videos-container"
-  >
-    <div *ngIf="videos.length" class="ui grid">
-      <!-- Selected video -->
-      <div class="eleven wide column">
-        <div class="ui segment selected-video">
-          <div class="ui embed">
-            <iframe
-              title="video player"
-              [src]="getVideoUrl()"
-              allowfullscreen
-            ></iframe>
-          </div>
-
-          <div *ngIf="selectedVideo" class="ui segment">
-            <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
-            <p>{{ selectedVideo.snippet.description }}</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Videos list -->
-      <div class="five wide column">
-        <div
-          class="ui segment video-snippet"
-          *ngFor="let video of videos"
-          (click)="selectVideo(video)"
-        >
-          <img
-            alt="{{ video.snippet.title }}"
-            class="ui image"
-            src="{{ video.snippet.thumbnails.medium.url }}"
-          />
-          <div class="content">
-            <div class="header">
-              {{ video.snippet.title }}
-            </div>
-          </div>
-        </div>
+        <button class="ui icon button delete-button" (click)="onFileDelete(i)">
+          <i class="icon x"></i>
+        </button>
       </div>
     </div>
-
-    <div *ngIf="!videos.length" class="ui header">
-      No videos found. Sorry!
-    </div>
   </div>
-
-  <footer class="ui inverted center aligned segment">
-    <p>
-      Made with
-      <span id="heart"> ❤ </span>
-      by A.C. ⠀· ⠀
-      <a href="https://github.com/AdrianaCucu" target="_blank">
-        GitHub
-      </a>
-    </p>
-  </footer>
 </div>
+
+<!-- Videos -->
+<div
+  *ngIf="routeParams.includes('videos')"
+  class="ui container videos-container"
+>
+  <div *ngIf="videos.length" class="ui grid">
+    <!-- Selected video -->
+    <div class="eleven wide column">
+      <div class="ui segment selected-video">
+        <div class="ui embed">
+          <iframe
+            title="video player"
+            [src]="getVideoUrl()"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div *ngIf="selectedVideo" class="ui segment">
+          <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
+          <p>{{ selectedVideo.snippet.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Videos list -->
+    <div class="five wide column">
+      <div
+        class="ui segment video-snippet"
+        *ngFor="let video of videos"
+        (click)="selectVideo(video)"
+      >
+        <img
+          alt="{{ video.snippet.title }}"
+          class="ui image"
+          src="{{ video.snippet.thumbnails.medium.url }}"
+        />
+        <div class="content">
+          <div class="header">
+            {{ video.snippet.title }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!videos.length" class="ui header">
+    No videos found. Sorry!
+  </div>
+</div>
+
+<footer class="ui inverted center aligned segment">
+  <p>
+    Made with
+    <span id="heart"> ❤ </span>
+    by A.C. ⠀· ⠀
+    <a href="https://github.com/AdrianaCucu" target="_blank">
+      GitHub
+    </a>
+  </p>
+</footer>
