@@ -38,12 +38,24 @@
             Pictures
           </button>
           <div class="or"></div>
-          <button class="ui button active-button" [routerLink]="['/videos']">
+          <button class="ui button" [routerLink]="['/videos']">
             Videos
           </button>
         </div>
 
-        <button class="circular ui icon button" [routerLink]="['/add']">
+        <button
+          *ngIf="media === 'add'"
+          class="circular ui icon button active-button"
+          [routerLink]="['/add']"
+        >
+          <i class="icon plus"></i>
+        </button>
+
+        <button
+          *ngIf="media !== 'add'"
+          class="circular ui icon button"
+          [routerLink]="['/add']"
+        >
           <i class="icon plus"></i>
         </button>
       </div>

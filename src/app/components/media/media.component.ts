@@ -14,6 +14,7 @@ import { Pagination } from 'src/app/pagination';
 export class MediaComponent {
   pictures: any[];
   videos: any[];
+  userFiles: any[];
   routeParams: string;
 
   input: string; // the user input
@@ -30,7 +31,6 @@ export class MediaComponent {
     private sanitiser: DomSanitizer
   ) {
     this.routeParams = router.url;
-    // console.log(this.routeParams);
 
     this.pagination = new Pagination(mediaService);
 
@@ -45,7 +45,16 @@ export class MediaComponent {
       this.getPictures();
     } else if (this.routeParams.includes('videos')) {
       this.getVideos();
+    } else if (this.routeParams.includes('add')) {
+      this.userFiles = this.mediaService.getUserFiles();
     }
+  }
+
+  onFileUpload(event: any, index: number): void {
+    console.log(event.target.files[0]);
+    console.log(index);
+    this.mediaService.updateUserFiles(event.target.files[0], index);
+    this.userFiles = this.mediaService.getUserFiles();
   }
 
   getPictures(): void {

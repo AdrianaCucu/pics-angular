@@ -55,63 +55,90 @@
   </div>
 </div>
 
-<!-- Videos -->
+<!-- User uploaded pictures -->
 <div
-  *ngIf="routeParams.includes('videos')"
-  class="ui container videos-container"
+  *ngIf="routeParams.includes('add')"
+  class="ui container pictures-container"
 >
-  <div *ngIf="videos.length" class="ui grid">
-    <!-- Selected video -->
-    <div class="eleven wide column">
-      <div class="ui segment selected-video">
-        <div class="ui embed">
-          <iframe
-            title="video player"
-            [src]="getVideoUrl()"
-            allowfullscreen
-          ></iframe>
-        </div>
+  <div *ngIf="userFiles.length" class="image-list">
+    <div
+      *ngFor="let picture of userFiles; let i = index"
+      class="ui image item-{{ i }}"
+    >
+      <div class="no-image" *ngIf="!picture">
+        <input
+          class="hidden"
+          type="file"
+          (change)="onFileUpload($event, i)"
+          #selectFile
+        />
+        <button class="ui icon button no-image" (click)="selectFile.click()">
+          <i class="icon plus"></i>
+        </button>
+      </div>
 
-        <div *ngIf="selectedVideo" class="ui segment">
-          <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
-          <p>{{ selectedVideo.snippet.description }}</p>
+      <img *ngIf="picture" src="{{ picture }}" />
+    </div>
+  </div>
+
+  <!-- Videos -->
+  <div
+    *ngIf="routeParams.includes('videos')"
+    class="ui container videos-container"
+  >
+    <div *ngIf="videos.length" class="ui grid">
+      <!-- Selected video -->
+      <div class="eleven wide column">
+        <div class="ui segment selected-video">
+          <div class="ui embed">
+            <iframe
+              title="video player"
+              [src]="getVideoUrl()"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div *ngIf="selectedVideo" class="ui segment">
+            <h4 class="ui header">{{ selectedVideo.snippet.title }}</h4>
+            <p>{{ selectedVideo.snippet.description }}</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Videos list -->
-    <div class="five wide column">
-      <div
-        class="ui segment video-snippet"
-        *ngFor="let video of videos"
-        (click)="selectVideo(video)"
-      >
-        <img
-          alt="{{ video.snippet.title }}"
-          class="ui image"
-          src="{{ video.snippet.thumbnails.medium.url }}"
-        />
-        <div class="content">
-          <div class="header">
-            {{ video.snippet.title }}
+      <!-- Videos list -->
+      <div class="five wide column">
+        <div
+          class="ui segment video-snippet"
+          *ngFor="let video of videos"
+          (click)="selectVideo(video)"
+        >
+          <img
+            alt="{{ video.snippet.title }}"
+            class="ui image"
+            src="{{ video.snippet.thumbnails.medium.url }}"
+          />
+          <div class="content">
+            <div class="header">
+              {{ video.snippet.title }}
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div *ngIf="!videos.length" class="ui header">
+      No videos found. Sorry!
+    </div>
   </div>
 
-  <div *ngIf="!videos.length" class="ui header">
-    No videos found. Sorry!
-  </div>
+  <footer class="ui inverted center aligned segment">
+    <p>
+      Made with
+      <span id="heart"> ❤ </span>
+      by A.C. ⠀· ⠀
+      <a href="https://github.com/AdrianaCucu" target="_blank">
+        GitHub
+      </a>
+    </p>
+  </footer>
 </div>
-
-<footer class="ui inverted center aligned segment">
-  <p>
-    Made with
-    <span id="heart"> ❤ </span>
-    by A.C. ⠀· ⠀
-    <a href="https://github.com/AdrianaCucu" target="_blank">
-      GitHub
-    </a>
-  </p>
-</footer>

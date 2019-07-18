@@ -12,7 +12,38 @@ export class MediaService {
   YT_PATH: string = 'https://www.googleapis.com/youtube/v3';
   YT_KEY: string = 'AIzaSyDe3CTEv8cNkQR8nTY8cI18Vnb6OiJSMeQ';
 
+  userFiles: any[] = localStorage.getItem('userFiles')
+    ? JSON.parse(localStorage.getItem('userFiles'))
+    : ['', '', '', '', '', ''];
+
   constructor(private http: HttpClient) {}
+
+  getUserFiles(): object[] {
+    // console.log(this.userFiles);
+    return this.userFiles;
+  }
+
+  // Converts the file to base 64 to store in localStorage.
+  getBase64(file: File, index: number): void {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const result = reader.result;
+      // console.log(result);
+      this.userFiles[index] = result;
+      // console.log(this.userFiles);
+
+      localStorage.setItem('userFiles', JSON.stringify(this.userFiles));
+      // console.log(localStorage.getItem('userFiles'));
+    };
+    reader.onerror = error => {
+      console.log('Error:', error);
+    };
+  }
+
+  updateUserFiles(file: File, index: number): void {
+    this.getBase64(file, index);
+  }
 
   getPictures(
     input: string,
