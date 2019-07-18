@@ -1,8 +1,7 @@
 button:disabled {
   background: transparent;
-  color: white
+  color: white;
 }
-
 
 footer {
   position: fixed !important;
@@ -20,7 +19,9 @@ footer a {
 }
 
 footer a:hover {
-  color: #76c1d4;
+  background-image: linear-gradient(to right, #f4af1b, #00e1d9);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .image-list {
@@ -89,7 +90,9 @@ footer a:hover {
 
 .pagination button:hover,
 .active-button {
-  background: #76c1d4 !important;
+  background: #1b1c1d !important;
+  color: white !important;
+  border: 1px solid white;
 }
 
 .pagination {

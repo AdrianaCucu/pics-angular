@@ -1,6 +1,7 @@
 button:hover,
 .active-button {
-  background: #76c1d4 !important;
+  background: #1b1c1d !important;
+  color: white !important;
 }
 
 .sticky {

@@ -22,6 +22,7 @@ export class Pagination {
     this.perPage = perPage || this.perPage;
   }
 
+  // Does not use pagination for videos, because youtube is weird :)
   getData(type: string): Observable<object> {
     if (this.apiService instanceof MediaService) {
       if (type === 'pictures') {
