@@ -117,13 +117,14 @@ footer a:hover {
 .pagination .button {
   font-size: 1.3vh !important;
   width: 4vw;
+  background: #1b1c1d;
+  color: white;
 }
 
 .pagination button:hover,
 .active-button {
-  background: #1b1c1d !important;
-  color: white !important;
-  border: 1px solid white;
+  background: white !important;
+  color: #1b1c1d !important;
 }
 
 .pagination {
